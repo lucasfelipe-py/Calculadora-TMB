@@ -12,7 +12,7 @@ cor_preta = '#000000'
 # Estrutura janela
 janela = Tk()
 janela.title('Calculadora TMB')
-janela.geometry('600x800')
+janela.geometry('600x650')
 janela.configure(bg=cor_branca)
 
 #----------------------------------------------------------------------------------------------
