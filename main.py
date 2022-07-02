@@ -12,7 +12,7 @@ cor_preta = '#000000'
 # Estrutura janela
 janela = Tk()
 janela.title('Calculadora TMB')
-janela.geometry('600x650')
+janela.geometry('600x625')
 janela.configure(bg=cor_branca)
 
 #----------------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ def texto(linha, string, fonte='Ivy 10'):
 # Conteúdo frame_cima
     
     # Nome da aplicação
-app_nome = Label(frame_cima, text='Calculadora de TMB', width=45, height=1, padx=0, relief='flat', anchor='center', font=('Ivy 16 bold'), bg=cor_preta, fg=cor_branca)
+app_nome = Label(frame_cima, text='Calculadora de Metabolismo Basal', width=45, height=1, padx=0, relief='flat', anchor='center', font=('Ivy 16 bold'), bg=cor_preta, fg=cor_branca)
 app_nome.place(x=0, y=15)
     
     # Linha divisória dos frames
@@ -70,45 +70,47 @@ taxa_5.grid(row=5, column=0, sticky=NSEW, pady=1, padx=35)
 #----------------------------------------------------------------------------------------------
 
     # Entrada Sexo (Texto)
-texto(8, 'Digite o seu sexo (masculino ou feminino):', 'Ivy 10 bold')
+texto(6, 'Escolha o sexo:', 'Ivy 10 bold')
 
     # Entrada Sexo (Entrada usuário)
-entrada_sexo = Entry(frame_baixo, width=10, relief='solid',font=('Ivy 10 bold'))
-entrada_sexo.grid(row=9, column=0, sticky=NSEW, pady=5, padx=35)
+values = ['Masculino','Feminino']
+
+entrada_sexo = ttk.Combobox(frame_baixo, values=values)
+entrada_sexo.grid(row=7, column=0, sticky=NSEW, pady=1, padx=35)
 
 #----------------------------------------------------------------------------------------------
 
     # Entrada altura (Texto)
-texto(10, 'Digite a sua altura (cm):', 'Ivy 10 bold')
+texto(8, 'Digite a sua altura (cm):', 'Ivy 10 bold')
 
     # Entrada altura (Entrada usuário)
-entrada_altura = Entry(frame_baixo, width=10, relief='solid',font=('Ivy 10 bold'))
-entrada_altura.grid(row=11, column=0, sticky=NSEW, pady=5, padx=35)
+entrada_altura = Entry(frame_baixo, width=10, relief='solid',font=('Ivy 10'))
+entrada_altura.grid(row=9, column=0, sticky=NSEW, pady=5, padx=35)
 
 #----------------------------------------------------------------------------------------------
 
     # Entrada peso (Texto)
-texto(12, 'Digite o seu peso (kg):', 'Ivy 10 bold')
+texto(10, 'Digite o seu peso (kg):', 'Ivy 10 bold')
 
     # Entrada peso (Entrada usuário)
-entrada_peso = Entry(frame_baixo, width=10, relief='solid',font=('Ivy 10 bold'))
-entrada_peso.grid(row=13, column=0, sticky=NSEW, pady=5, padx=35)
+entrada_peso = Entry(frame_baixo, width=10, relief='solid',font=('Ivy 10'))
+entrada_peso.grid(row=11, column=0, sticky=NSEW, pady=5, padx=35)
 
 #----------------------------------------------------------------------------------------------
 
     # Entrada idade (Texto)
-texto(14, 'Digite a sua idade (anos):', 'Ivy 10 bold')
+texto(12, 'Digite a sua idade (anos):', 'Ivy 10 bold')
 
     # Entrada idade (Entrada usuário)
-entrada_idade = Entry(frame_baixo, width=10, relief='solid',font=('Ivy 10 bold'))
-entrada_idade.grid(row=15, column=0, sticky=NSEW, pady=5, padx=35)
+entrada_idade = Entry(frame_baixo, width=10, relief='solid',font=('Ivy 10'))
+entrada_idade.grid(row=13, column=0, sticky=NSEW, pady=5, padx=35)
 
 #----------------------------------------------------------------------------------------------
 
     # Resultado do cálculo
 
 saida_resultado = Label(frame_baixo, text='', width=36, height=2, padx=0, relief='flat', font=('Ivy 20 bold'), bg=cor_preta, fg=cor_branca)
-saida_resultado.grid(row=16, column=0, sticky=NSEW, pady=20, padx=0)
+saida_resultado.grid(row=14, column=0, sticky=NSEW, pady=20, padx=0)
 
 #----------------------------------------------------------------------------------------------
 
@@ -116,7 +118,7 @@ saida_resultado.grid(row=16, column=0, sticky=NSEW, pady=20, padx=0)
 def calcular():
     
     taxa_entrada_usuario = int(entrada_taxas.get())
-    sexo_rec = entrada_sexo.get().lower()
+    sexo_rec = entrada_sexo.get()
     altura = int(entrada_altura.get())
     peso = int(entrada_peso.get())
     idade = int(entrada_idade.get())
@@ -132,12 +134,12 @@ def calcular():
     if taxa_entrada_usuario == 5:
             taxa_atividade = 1.9
             
-    if sexo_rec == 'feminino':
+    if sexo_rec == 'Feminino':
             tmb = taxa_atividade * (655 + (9.6 * peso)) + (1.8 * altura) - (4.7 * idade)
-    elif sexo_rec == 'masculino':
+    else:
             tmb = taxa_atividade * (66 + (13.7 * peso)) + (5 * altura) - (6.8 * idade)
 
-    saida_resultado['text'] = 'A sua TMB é: ' + str(int(tmb)) + 'kcal'
+    saida_resultado['text'] = 'O seu gasto calórico diário é: ' + str(int(tmb)) + 'kcal'
 
 #----------------------------------------------------------------------------------------------
 
