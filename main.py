@@ -150,4 +150,5 @@ botao_calculo.grid(row=17, column=0, sticky=NSEW, pady=20, padx=35)
 #----------------------------------------------------------------------------------------------
 
 # Abrir janela
-janela.mainloop()
+if __name__ == '__main__':
+    janela.mainloop()
