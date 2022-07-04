@@ -26,10 +26,10 @@ frame_baixo.grid(row=1, column=0, sticky=NSEW)
 
 #----------------------------------------------------------------------------------------------
 
-# Método para descrição dos níveis de atividade
+# Método para reduzir o código das labels
 def texto(linha, string, fonte='Ivy 10'):
-    app_descricaoTaxas = Label(frame_baixo, text=string, height=1, padx=0, relief='flat', anchor='center', font=(fonte), bg=cor_branca, fg=cor_preta)
-    app_descricaoTaxas.grid(row=linha, column=0, sticky=NSEW, pady=0, padx=35)
+    label = Label(frame_baixo, text=string, height=1, padx=0, relief='flat', anchor='center', font=(fonte), bg=cor_branca, fg=cor_preta)
+    label.grid(row=linha, column=0, sticky=NSEW, pady=0, padx=35)
 
 #----------------------------------------------------------------------------------------------
 
