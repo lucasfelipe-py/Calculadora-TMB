@@ -14,6 +14,7 @@ janela = Tk()
 janela.title('Calculadora TMB')
 janela.geometry('600x625')
 janela.configure(bg=cor_branca)
+janela.resizable(width=FALSE, height=FALSE)
 
 #----------------------------------------------------------------------------------------------
 
