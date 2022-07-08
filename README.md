@@ -6,4 +6,3 @@ Calculadora de metabolismo basal com Tkinter
 
 Próximas atualizações:
 - Melhorar interface gráfica
-- Atualizar executável
